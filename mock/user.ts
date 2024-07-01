@@ -26,8 +26,21 @@ const logout = {
   statusCode: 200,
   response: () => {
     return {
-      code: 1,
+      code: 200,
       data: true,
+    }
+  },
+}
+
+
+const getUserInfo = {
+  url: '/mock/user/info',
+  method: 'get',
+  statusCode: 200,
+  response: ({ query }) => {
+    return {
+      code: 200,
+      data: {},
     }
   },
 }
@@ -60,4 +73,4 @@ const getUserMenus = {
   },
 }
 
-export default [login, logout, getUserMenus] as MockMethod[]
+export default [login, logout, getUserMenus, getUserInfo] as MockMethod[]
