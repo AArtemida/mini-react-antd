@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';  
 import { BrowserRouter } from 'react-router-dom';  
 import DynamicRoutes from '@/router'
+// import { App } from 'antd'
 
-const App: React.FC = () => {
+const MyApp: React.FC = () => {
   return (
-    <BrowserRouter>  
-      <DynamicRoutes />  
-    </BrowserRouter>  
+    // <App>
+      <BrowserRouter>  
+        <DynamicRoutes />  
+      </BrowserRouter>
+    // </App>
   )
 }
-export default App
+export default MyApp

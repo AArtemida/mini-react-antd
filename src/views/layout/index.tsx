@@ -1,36 +1,27 @@
-import React, { useState } from 'react';
-import { Button, Layout, Menu, theme } from 'antd';
+import React, { useState } from 'react'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Button, Layout, Menu, theme } from 'antd'
 import DynamicContent from './Content'
 import Sidebar from './Sidebar'
+import Header from './Header'
 
-const { Header } = Layout;
-
-const CommonLayout = () => {
-  
+const CommonLayout: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
+  } = theme.useToken()
+  const [collapsed, setCollapsed] = useState<boolean>(false)
+  const updateCollapsed = val => {
+    setCollapsed(val)
+  }
   return (
     <Layout>
-      <Sidebar />
+      <Sidebar collapsed={collapsed} />
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          {/* <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          /> */}
-        </Header>
+        <Header changeCollapsed={updateCollapsed}></Header>
         <DynamicContent></DynamicContent>
       </Layout>
     </Layout>
-  );
-};
+  )
+}
 
-export default CommonLayout;
+export default CommonLayout
