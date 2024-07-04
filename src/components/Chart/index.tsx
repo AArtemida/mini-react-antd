@@ -1,5 +1,5 @@
 // @/components/Chart/index.tsx
-import { useRef, useEffect, CSSProperties } from 'react'
+import React, { useRef, useEffect, CSSProperties } from 'react'
 // 引入 Echarts 的类型声明
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
@@ -106,6 +106,26 @@ const CommonChart = (props: ChartProps) => {
     }
   })
   return <div style={{ ...style }} className={className} ref={chartRef}></div>
+}
+
+export function getAreaStyle(color) {
+  return new echarts.graphic.LinearGradient(
+    0,
+    0,
+    0,
+    1,
+    [
+      {
+        offset: 0,
+        color: color,
+      },
+      {
+        offset: 1,
+        color: "rgba(255,255,255, 0.3)",
+      },
+    ],
+    false
+  )
 }
 
 export { CommonChart }

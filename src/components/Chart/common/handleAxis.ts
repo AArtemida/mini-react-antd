@@ -18,13 +18,13 @@ function getAxis(chartData, custom = {}, axisData) {
       color: xAxisColor,
     },
     axisLine: {
-      show: !custom.hideAxisLine,
+      show: true,
       lineStyle: {
         color: custom.axisLineColor || '#eef3f8',
       },
     },
     axisTick: {
-      show: !custom.hideAxisLine,
+      show: true,
     },
   }
   let axisLabel = {
@@ -63,7 +63,7 @@ function getAxis(chartData, custom = {}, axisData) {
     splitLine: {
       show: true,
       lineStyle: {
-        color: '#eef3f8',
+        color: '#F6F7F9',
       },
     },
     //数值坐标轴位置

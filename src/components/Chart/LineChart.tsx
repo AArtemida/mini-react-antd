@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommonChart } from './index'
+import { CommonChart, getAreaStyle } from './index'
 import type { ECOption } from './index'
 import getAxis from './common/handleAxis'
 
@@ -23,15 +23,13 @@ const useOption = (data: Array<any>, custom): ECOption => {
     series: [
       {
         name: custom?.title || '',
-        type: 'bar',
-        barMinHeight: 1,
-        barMaxWidth: 20,
-        itemStyle: {
-          barBorderRadius: [4, 4, 0, 0],
-          color: function(params) {
-            const index = params.dataIndex
-            return index % 2 ? '#EEAC6C' : primaryColor
-          }
+        type: 'line',
+        symbolSize: 4,
+        smooth: true,
+        areaStyle: {
+          normal: {
+            color: getAreaStyle(primaryColor)
+          },
         },
         data,
       },
@@ -52,7 +50,9 @@ const useOption = (data: Array<any>, custom): ECOption => {
   return option
 }
 
-const BarChart = ({ chartData, style, className }) => {
+
+
+const LineChart = ({ chartData, style, className }) => {
   const option = useOption(chartData)
   return (
     <CommonChart
@@ -64,4 +64,4 @@ const BarChart = ({ chartData, style, className }) => {
   )
 }
 
-export default BarChart
+export default LineChart
