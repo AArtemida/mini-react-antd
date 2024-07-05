@@ -1,0 +1,26 @@
+.center-child {
+  width: 50%;
+}
+
+.pending-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  .pending-item {
+    text-align: center;
+    cursor: pointer;
+  }
+  .anticon {
+    color: @primary;
+    font-size: 2rem;
+  }
+  .pending-item__label {
+    color: #666;
+    margin-bottom: 0;
+  }
+  .pending-item__value {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+}

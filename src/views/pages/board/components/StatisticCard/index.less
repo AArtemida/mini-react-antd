@@ -1,0 +1,36 @@
+.top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  height: 140px;
+  margin-bottom: 30px;
+}
+.top-card {
+  border-radius: 10px;
+  color: @white;
+  &:first-child {
+    background: linear-gradient(90deg, #BFE8E3 0%, #6DBEB5 100%);
+  }
+  &:nth-child(2) {
+    background: linear-gradient(90deg, #EEAE6E 0%, #FC7B53 100%);
+  }
+  &:nth-child(3) {
+    background: linear-gradient(90deg, #9568F6 0%, #3D69F4 100%);
+  }
+  &:nth-child(4) {
+    background: linear-gradient(90deg, #FE8D7D 0%, #FF63A3 100%);
+  }
+
+  .anticon {
+    font-size: 4rem;
+  }
+  .top-card__val {
+    font-size: 1.6rem;
+  }
+  .top-card__content {
+    text-align: right;
+  }
+  .top-card__label {
+    opacity: .8;
+  }
+}
