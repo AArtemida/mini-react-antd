@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { FormProps } from 'antd'
 import { Form, Input, Button, message, Spin } from 'antd'
-import { login, getUserInfo } from '@/api/user'
+import { useAuth } from '@/hooks/useAuth'
 
 import loginBg from '@/assets/images/login_bg.jpg'
 import './index.less'
@@ -36,33 +36,19 @@ const LoginForm: React.FC = props => {
   type LayoutType = Parameters<typeof Form>[0]['layout']
 
   const { form } = props
+  const { onLogin  } = useAuth()
 
   const navigate = useNavigate()
   const [loading, setLoading] = useState<boolean>(false)
 
-  const handleLogin = (username, password) => {
+  const handleLogin = async (username, password) => {
     // 登录-获取用户信息
-    // setLoading(true)
-    login({ username, password })
-      .then(res => {
-        message.success('登录成功')
-        handleUserInfo(res.data?.token)
-        // 跳转
-        navigate('/')
-      })
-      .catch(error => {
-        setLoading(false)
-        message.error(error)
-      })
-  }
-
-  // 获取用户信息
-  const handleUserInfo = (token: string) => {
-    getUserInfo(token)
-      .then(data => {})
-      .catch(error => {
-        message.error(error)
-      })
+    setLoading(true)
+    await onLogin({ username, password }, () => {
+      setLoading(false)
+      // 跳转
+      navigate('/')
+    })
   }
 
   const getMenus = () => {}
@@ -81,7 +67,6 @@ const LoginForm: React.FC = props => {
       layout="vertical"
       size="large"
       style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -103,7 +88,7 @@ const LoginForm: React.FC = props => {
       </Form.Item>
 
       <Form.Item>
-        <Button className="login-btn" type="primary" htmlType="submit">
+        <Button className="login-btn" type="primary" htmlType="submit" loading={loading}>
           登录
         </Button>
       </Form.Item>

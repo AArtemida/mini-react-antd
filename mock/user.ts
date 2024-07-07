@@ -40,7 +40,11 @@ const getUserInfo = {
   response: ({ query }) => {
     return {
       code: 200,
-      data: {},
+      data: {
+        gender: Math.round(Math.random()),
+        dept: '研发部',
+        position: '客户端开发',
+      },
     }
   },
 }
@@ -67,6 +71,11 @@ const getUserMenus = {
           path: '/page1',
           componentName: '/page1/index.tsx',
           title: 'page1',
+        },
+        {
+          path: '/userinfo',
+          componentName: '/userInfo/index.tsx',
+          title: '个人中心',
         },
       ],
     }
