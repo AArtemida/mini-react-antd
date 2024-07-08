@@ -37,6 +37,7 @@ const DynamicContent: React.FC = props => {
     minHeight: 280,
     background: colorBgContainer,
     borderRadius: borderRadiusLG,
+    overflowY: 'auto'
   }
   useEffect(() => {
     // 获取用户菜单

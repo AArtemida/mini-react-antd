@@ -49,7 +49,9 @@ const Sidebar : React.FC = ({ collapsed }) => {
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
-      <div className="demo-logo-vertical" />
+      <div className="logo-vertical" >
+        管理系统
+      </div>
       <Menu
         theme="dark"
         mode="inline"
