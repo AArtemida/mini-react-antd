@@ -1,2 +1,4 @@
 import user from './user'
-export default [user]
+import board from './board'
+import goods from './goods'
+export default [user, board, goods]

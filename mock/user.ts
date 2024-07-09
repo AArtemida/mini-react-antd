@@ -63,14 +63,9 @@ const getUserMenus = {
           title: '首页',
         },
         {
-          path: '/example',
-          componentName: '/example/index.tsx',
-          title: '示例',
-        },
-        {
-          path: '/page1',
-          componentName: '/page1/index.tsx',
-          title: 'page1',
+          path: '/goods',
+          componentName: '/goods/index.tsx',
+          title: '商品',
         },
         {
           path: '/userinfo',
@@ -82,4 +77,18 @@ const getUserMenus = {
   },
 }
 
-export default [login, logout, getUserMenus, getUserInfo] as MockMethod[]
+
+const uploadUserImg = {  
+  url: '/mock/user/upload',  
+  method: 'post',  
+  response: () => {  
+    return {  
+      code: 200,  
+      message: '上传成功',  
+      data: {  
+        url: '/uploads/1.jpg'  
+      }  
+    };  
+  }  
+}
+export default [login, logout, getUserMenus, getUserInfo, uploadUserImg] as MockMethod[]
