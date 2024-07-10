@@ -17,29 +17,37 @@ const Sidebar : React.FC = ({ collapsed }) => {
 
   const location = useLocation()
   const [selectedKey, setSelectedKey] = useState<string[]>([''])
+  const [openKeys, setOpenKeys] = useState<string[]>([''])
 
   const navigate = useNavigate()
 
   // 转菜单格式
   useEffect(() => {
     if (!loading && menus.length) {
-      const d = menus.map(menu => ({
-        key: menu.path,
-        label: menu.title,
-        icon: '',
-        children: menu.children
-      }))
+      const d = handleMenuData(menus)
       setDynamicMenus(d)
     }
   }, [loading])
 
+  // 处理菜单（嵌套路径）
+  const handleMenuData = (menus, parentPath = '') => {
+    return menus?.map(menu => {
+      let newPath = parentPath + menu.path
+      return {
+        key: newPath,
+        label: menu.title,
+        icon: '',
+        children: handleMenuData(menu.children, newPath)
+      }
+    })
+  }
+
   useEffect(() => {
     const currentPath = location.pathname
-    const matchedMenu = dynamicMenus.find(item => item.key === currentPath)
+    const ranks = currentPath.split('/')
     // 根据路径查找匹配的菜单项
-    if (matchedMenu) {
-      setSelectedKey([matchedMenu.key])
-    }
+    setSelectedKey([currentPath])
+    setOpenKeys(['/other'])
   }, [location.pathname, dynamicMenus])
 
   // 点击跳转
@@ -57,6 +65,7 @@ const Sidebar : React.FC = ({ collapsed }) => {
         mode="inline"
         defaultSelectedKeys={['/']}
         selectedKeys={selectedKey}
+        defaultOpenKeys={openKeys}
         items={dynamicMenus}
         onClick={onClick}
       />

@@ -32,7 +32,6 @@ const logout = {
   },
 }
 
-
 const getUserInfo = {
   url: '/mock/user/info',
   method: 'get',
@@ -49,6 +48,7 @@ const getUserInfo = {
   },
 }
 
+// 菜单权限由接口控制
 const getUserMenus = {
   url: '/mock/user/menus',
   method: 'get',
@@ -68,6 +68,30 @@ const getUserMenus = {
           title: '商品',
         },
         {
+          path: '/other',
+          componentName: '/other/index.tsx',
+          title: '嵌套',
+          children: [
+            {
+              path: '/page1',
+              componentName: '/other/page1/index.tsx',
+              title: 'Page1',
+            },
+            {
+              path: '/page2',
+              componentName: '/other/page2/index.tsx',
+              title: 'Page2',
+              children: [
+                {
+                  path: '/page3',
+                  componentName: '/other/page2/page3/index.tsx',
+                  title: 'Page3',
+                },
+              ],
+            },
+          ],
+        },
+        {
           path: '/userinfo',
           componentName: '/userInfo/index.tsx',
           title: '个人中心',
@@ -77,18 +101,23 @@ const getUserMenus = {
   },
 }
 
-
-const uploadUserImg = {  
-  url: '/mock/user/upload',  
-  method: 'post',  
-  response: () => {  
-    return {  
-      code: 200,  
-      message: '上传成功',  
-      data: {  
-        url: '/uploads/1.jpg'  
-      }  
-    };  
-  }  
+const uploadUserImg = {
+  url: '/mock/user/upload',
+  method: 'post',
+  response: () => {
+    return {
+      code: 200,
+      message: '上传成功',
+      data: {
+        url: '/uploads/1.jpg',
+      },
+    }
+  },
 }
-export default [login, logout, getUserMenus, getUserInfo, uploadUserImg] as MockMethod[]
+export default [
+  login,
+  logout,
+  getUserMenus,
+  getUserInfo,
+  uploadUserImg,
+] as MockMethod[]
