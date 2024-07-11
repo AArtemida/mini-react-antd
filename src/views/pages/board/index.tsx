@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card } from 'antd'
 import StatisticCard from './components/StatisticCard'
 import ProduceList from './components/ProduceList'

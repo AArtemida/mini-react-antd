@@ -75,7 +75,7 @@ const getUserMenus = {
             {
               path: '/page1',
               componentName: '/other/page1/index.tsx',
-              title: 'Page1',
+              title: '按钮权限',
             },
             {
               path: '/page2',

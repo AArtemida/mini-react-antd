@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import type { RadioChangeEvent, TableProps } from 'antd'
 import { Space, Table, Tag, Card, Radio } from 'antd'
 import { getHotProduct } from '@/api/board'
