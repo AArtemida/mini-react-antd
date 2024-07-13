@@ -135,6 +135,7 @@ h1 {
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
+  background: #f9f9f9;
   > .ant-layout {
     width: 100%;
     height: 100%;
@@ -147,4 +148,49 @@ h1 {
   font-weight: 700;
   padding: 20px;
   font-size: 1.2rem;
+}
+
+/*---滚动条默认显示样式--*/
+::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  height: 50px;
+  outline-offset: -2px;
+  outline: 2px solid #fff;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+/*---滚动条大小--*/
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+.tab-view-box {
+  background: @white;
+  border-bottom: 1px solid @borderColor;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  .tag-view-item {
+    border: 1px solid @borderColor;
+    padding: 3px 10px;
+    display: inline-block;
+    font-size: 12px;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+    .anticon {
+      font-size: 12px;
+      margin-left: 5px;
+      color: #bbb;
+    }
+    &.active {
+      background: @primary;
+      color: @white;
+      border-color: @primary;
+      .anticon {
+        color: @white;
+      }
+    }
+  }
 }

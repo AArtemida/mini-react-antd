@@ -38,3 +38,33 @@ export function debounce(func, wait, immediate) {
     return result
   }
 }
+
+/**
+ * 根据key在嵌套数组中查找
+ * @param {Array} array
+ * @param {string} searchKey
+ */
+interface ItemModel {
+  key: string
+  children?: ItemModel[]
+  [prop: string]: string
+}
+export function findFromArray(array: ItemModel[], searchKey: string) {
+  let result = null
+
+  function traverse(items) {
+    for (let item of items) {
+      if (item.key === searchKey) {
+        result = Object.assign({}, item)
+        break
+      }
+      if (Array.isArray(item.children)) {
+        traverse(item.children)
+      }
+    }
+  }
+
+  traverse(array)
+
+  return result
+}

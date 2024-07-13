@@ -2,8 +2,8 @@ import React, { useState, useEffect, Children } from 'react'
 import { Layout, Menu } from 'antd'
 import type { MenuProps } from 'antd';
 
-import { useSelector } from 'react-redux'
-import { selectLoading, selectMenus } from '@/store/reducers/menu'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectLoading, selectMenus, changeSideMenus } from '@/store/reducers/menu'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -20,12 +20,14 @@ const Sidebar : React.FC = ({ collapsed }) => {
   const [openKeys, setOpenKeys] = useState<string[]>([''])
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   // 转菜单格式
   useEffect(() => {
     if (!loading && menus.length) {
       const d = handleMenuData(menus)
       setDynamicMenus(d)
+      dispatch(changeSideMenus(d))
     }
   }, [loading])
 
