@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Space, Table, Tag, Button, Popconfirm, message } from 'antd'
 import type { TableProps, PopconfirmProps } from 'antd'
 import { getGoodsList } from '@/api/goods'
+import AddGoods from './AddGoods'
 
 interface DataType {
   key: number
@@ -82,6 +83,8 @@ const TableList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const start = () => {
     setLoading(true)
     // ajax request after empty completing
@@ -101,7 +104,13 @@ const TableList: React.FC = () => {
   }
   const hasSelected = selectedRowKeys.length > 0
 
-  const showAdd = () => {}
+  const showAdd = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeAddModal = () => {
+    setIsModalOpen(false)
+  }
 
   const handleDelete: PopconfirmProps['onConfirm'] = e => {
     console.log(e)
@@ -132,6 +141,8 @@ const TableList: React.FC = () => {
         </Popconfirm>
       </section>
       <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+
+      <AddGoods isOpen={isModalOpen} closeModal={closeAddModal}></AddGoods>
     </div>
   )
 }

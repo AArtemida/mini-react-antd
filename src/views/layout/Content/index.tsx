@@ -33,8 +33,8 @@ const DynamicContent: React.FC = props => {
   const menus = useSelector(selectMenus)
   const loading = useSelector(selectLoading)
   const contentSytle = {
-    margin: '24px 16px',
-    padding: 24,
+    margin: 15,
+    padding: 20,
     minHeight: 280,
     background: colorBgContainer,
     borderRadius: borderRadiusLG,

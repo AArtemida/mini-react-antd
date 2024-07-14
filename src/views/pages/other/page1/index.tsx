@@ -22,7 +22,7 @@ const Page1: React.FC = () => {
   return (
     <div>
       <h4>按钮权限</h4>
-      <div class="switch-box mb20">
+      <div className="switch-box mb20">
         <span className="mr10">切换登录角色 :</span>
         <Radio.Group
           options={options}
@@ -38,7 +38,7 @@ const Page1: React.FC = () => {
         type="warning"
       />
 
-      <div class="btns">
+      <div className="btns">
         <AuthWapper permissions={['admin']}>
           <Button type="primary" className="mr10">
             仅admin可见的按钮
