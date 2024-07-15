@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useMemo, useCallback } from 'react'
-import { useLocalStorage } from './useLocalStorage'
+import { useSessionStorage } from './useSessionStorage'
 import { login, logout, getUserInfo } from '@/api/user'
 import { message } from 'antd'
 
@@ -11,7 +11,7 @@ export const AuthContext = createContext({
 })
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useLocalStorage('user', null)
+  const [user, setUser] = useSessionStorage('user', null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const onLogin = useCallback(async (data, cb) => {
@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
       const res = await logout(data)
       setUser(null)
       setIsAuthenticated(false)
+      window.localStorage.setItem('persist:root', null)
       cb && cb()
     } catch (error) {
       console.error('logout failed:', error)

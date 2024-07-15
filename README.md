@@ -1,11 +1,28 @@
-# React + TypeScript + Vite
+# MiniReactAdmin
+React + TypeScript + Vite搭建的基础管理系统。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- [x] 生成动态路由、菜单（react-router v6）
+- [x] 支持嵌套路由
+- [x] 标签导航栏（redux）
+- [x] 按钮权限
+- [x] 登录状态
+- [x] 图表展示（echarts）
+- [x] `Mock`数据
 
-Currently, two official plugins are available:
+## run
+```
+npm i
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+npm run dev
+```
+或
+```
+npx vite --port=5000
+```
+
+## Images
+![login](./img/index.png)
 
 ## Expanding the ESLint configuration
 

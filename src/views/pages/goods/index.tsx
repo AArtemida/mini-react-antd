@@ -113,7 +113,6 @@ const TableList: React.FC = () => {
   }
 
   const handleDelete: PopconfirmProps['onConfirm'] = e => {
-    console.log(e)
     message.success('删除成功')
   }
 
